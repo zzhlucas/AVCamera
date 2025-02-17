@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "C233C125-2FC7-42AA-8362-294BB60B5DC7"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B673781B-D63F-4ADC-8A8E-7702AD9D9AA6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVCamera/suanfa/huiwenlianbiao.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "isPalindrome(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B673781B-D63F-4ADC-8A8E-7702AD9D9AA6 - fec4bbd0d711931f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AVCamera.Solution.isPalindrome(Swift.Optional&lt;AVCamera.ListNode&gt;) -&gt; Swift.Bool"
+                  moduleName = "AVCamera"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adaicon/Desktop/AVCamera/AVCamera/suanfa/huiwenlianbiao.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "1272">
+               </Location>
+               <Location
+                  uuid = "B673781B-D63F-4ADC-8A8E-7702AD9D9AA6 - fec4bbd0d711937c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AVCamera.Solution.isPalindrome(Swift.Optional&lt;AVCamera.ListNode&gt;) -&gt; Swift.Bool"
+                  moduleName = "AVCamera"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adaicon/Desktop/AVCamera/AVCamera/suanfa/huiwenlianbiao.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "1272">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "38E3E31C-5D2F-4F0B-ACBF-50576CC0AD85"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVCamera/suanfa/huiwenlianbiao.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "isPalindrome(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "38E3E31C-5D2F-4F0B-ACBF-50576CC0AD85 - fec4bbd0d71192d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AVCamera.Solution.isPalindrome(Swift.Optional&lt;AVCamera.ListNode&gt;) -&gt; Swift.Bool"
+                  moduleName = "AVCamera"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adaicon/Desktop/AVCamera/AVCamera/suanfa/huiwenlianbiao.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "968">
+               </Location>
+               <Location
+                  uuid = "38E3E31C-5D2F-4F0B-ACBF-50576CC0AD85 - fec4bbd0d7119236"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AVCamera.Solution.isPalindrome(Swift.Optional&lt;AVCamera.ListNode&gt;) -&gt; Swift.Bool"
+                  moduleName = "AVCamera"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adaicon/Desktop/AVCamera/AVCamera/suanfa/huiwenlianbiao.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "968">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E1298D0A-9CEC-4647-A7FB-B178215CF9DD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVCamera/suanfa/huiwenlianbiao.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "reverseNode(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7D3747E9-A543-497E-A1F7-FE66B9F9DF04"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVCamera/suanfa/huiwenlianbiao.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "isPalindrome(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0330946E-15C4-4808-988F-9225AE640D6E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVCamera/suanfa/huiwenlianbiao.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "isPalindrome(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5474B82D-D9F6-457A-9832-71DC4ADDAFE1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVCamera/suanfa/huiwenlianbiao.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "middle(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DF8104F0-B1A4-4FCC-A314-4CF348B642B7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVCamera/suanfa/huiwenlianbiao.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "reverseNode(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9C3A4445-9092-41E9-B335-070289CA7285"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVCamera/suanfa/huiwenlianbiao.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "reverseNode(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9C3A4445-9092-41E9-B335-070289CA7285 - 2d051bd646e1b100"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AVCamera.Solution.middle(Swift.Optional&lt;AVCamera.ListNode&gt;) -&gt; Swift.Optional&lt;AVCamera.ListNode&gt;"
+                  moduleName = "AVCamera"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adaicon/Desktop/AVCamera/AVCamera/suanfa/huiwenlianbiao.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "9C3A4445-9092-41E9-B335-070289CA7285 - 2477f9db0d31e401"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AVCamera.Solution.reverseNode(Swift.Optional&lt;AVCamera.ListNode&gt;) -&gt; Swift.Optional&lt;AVCamera.ListNode&gt;"
+                  moduleName = "AVCamera"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adaicon/Desktop/AVCamera/AVCamera/suanfa/huiwenlianbiao.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "628">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5174A822-D278-4122-B13C-90891F796E87"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVCamera/suanfa/huiwenlianbiao.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "isPalindrome(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

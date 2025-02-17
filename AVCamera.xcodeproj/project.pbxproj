@@ -11,7 +11,6 @@
 		1B6D8DF22D622A5D008A4CF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8DF12D622A5D008A4CF1 /* SceneDelegate.swift */; };
 		1B6D8DF42D622A5D008A4CF1 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8DF32D622A5D008A4CF1 /* CameraViewController.swift */; };
 		1B6D8DF92D622A5F008A4CF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B6D8DF82D622A5F008A4CF1 /* Assets.xcassets */; };
-		1B6D8DFC2D622A5F008A4CF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B6D8DFA2D622A5F008A4CF1 /* LaunchScreen.storyboard */; };
 		1B6D8E072D622A5F008A4CF1 /* AVCameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8E062D622A5F008A4CF1 /* AVCameraTests.swift */; };
 		1B6D8E112D622A5F008A4CF1 /* AVCameraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8E102D622A5F008A4CF1 /* AVCameraUITests.swift */; };
 		1B6D8E132D622A5F008A4CF1 /* AVCameraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8E122D622A5F008A4CF1 /* AVCameraUITestsLaunchTests.swift */; };
@@ -40,7 +39,6 @@
 		1B6D8DF12D622A5D008A4CF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1B6D8DF32D622A5D008A4CF1 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		1B6D8DF82D622A5F008A4CF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1B6D8DFB2D622A5F008A4CF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B6D8DFD2D622A5F008A4CF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B6D8E022D622A5F008A4CF1 /* AVCameraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AVCameraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6D8E062D622A5F008A4CF1 /* AVCameraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCameraTests.swift; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 				1B6D8DF12D622A5D008A4CF1 /* SceneDelegate.swift */,
 				1B6D8DF32D622A5D008A4CF1 /* CameraViewController.swift */,
 				1B6D8DF82D622A5F008A4CF1 /* Assets.xcassets */,
-				1B6D8DFA2D622A5F008A4CF1 /* LaunchScreen.storyboard */,
 				1B6D8DFD2D622A5F008A4CF1 /* Info.plist */,
 			);
 			path = AVCamera;
@@ -228,7 +225,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B6D8DFC2D622A5F008A4CF1 /* LaunchScreen.storyboard in Resources */,
 				1B6D8DF92D622A5F008A4CF1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,17 +287,6 @@
 			targetProxy = 1B6D8E0D2D622A5F008A4CF1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		1B6D8DFA2D622A5F008A4CF1 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1B6D8DFB2D622A5F008A4CF1 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1B6D8E142D622A5F008A4CF1 /* Debug */ = {
@@ -435,7 +420,6 @@
 				INFOPLIST_FILE = AVCamera/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -464,7 +448,6 @@
 				INFOPLIST_FILE = AVCamera/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
