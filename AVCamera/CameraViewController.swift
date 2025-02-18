@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CameraViewController: UIViewController {
     var cameraView: UIView?
@@ -17,6 +18,7 @@ class CameraViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.white
         setupCameraView()
+        setupCamera()
     }
     
     func setupCameraView() {
@@ -28,6 +30,27 @@ class CameraViewController: UIViewController {
         
         if let view = cameraView {
             self.view.addSubview(view)
+        }
+    }
+    
+    func setupCamera() {
+        var session = AVCaptureSession()
+                        
+        guard let cameraDevice = AVCaptureDevice.default(for: .video) else {
+            return
+        }
+        
+        guard let cameraInput = try? AVCaptureDeviceInput(device: cameraDevice) else {
+            return
+        }
+        
+        if session.canAddInput(cameraInput) {
+            session.addInput(cameraInput)
+        }
+        
+        var imageOutput = AVCapturePhotoOutput()
+        if session.canAddOutput(imageOutput) {
+            session.addOutput(imageOutput)
         }
     }
 }
