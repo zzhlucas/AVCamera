@@ -34,7 +34,7 @@ class CameraViewController: UIViewController {
     }
     
     func setupCamera() {
-        var session = AVCaptureSession()
+        let session = AVCaptureSession()
                         
         guard let cameraDevice = AVCaptureDevice.default(for: .video) else {
             return
@@ -48,7 +48,7 @@ class CameraViewController: UIViewController {
             session.addInput(cameraInput)
         }
         
-        var imageOutput = AVCapturePhotoOutput()
+        let imageOutput = AVCapturePhotoOutput()
         if session.canAddOutput(imageOutput) {
             session.addOutput(imageOutput)
         }

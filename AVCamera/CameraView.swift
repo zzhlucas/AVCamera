@@ -39,9 +39,10 @@ public class CameraView: UIView  {
         return AVCaptureVideoPreviewLayer.self
     }
     
-    func captureDevicePointForPoint(point: CGPoint) {
+    func captureDevicePointForPoint(point: CGPoint) -> CGPoint {
         if let layer = self.layer as? AVCaptureVideoPreviewLayer {
-            layer.captureDevicePointConverted(fromLayerPoint: point)
+            return layer.layerPointConverted(fromCaptureDevicePoint: point)
         }
+        return .zero
     }
 }
