@@ -16,7 +16,7 @@ protocol CameraControllerDelegate: AnyObject {
 
 public class CameraController: NSObject {
     weak var delegate: CameraControllerDelegate?
-    private let captureSession: AVCaptureSession
+    let captureSession: AVCaptureSession
     
     private var activeVideoInput: AVCaptureDeviceInput?
     private let photoOutput: AVCapturePhotoOutput
@@ -85,20 +85,54 @@ public class CameraController: NSObject {
     }
     
     func startSession() {
-        
+        if !captureSession.isRunning {
+            videoQueue.async { [self] in // 为什么要放在异步队列里呢，耗时函数，会阻塞主线程
+                captureSession.startRunning()
+            }
+        }
     }
     
     func stopSession() {
-        
+        if captureSession.isRunning {
+            videoQueue.async { [self] in
+                captureSession.stopRunning()
+            }
+        }
     }
     
     // camera device support
-    func switchCameras() {
+    func switchCameras() -> Bool {
+        if canSwitchCameras() == false {
+            return false
+        }
         
+        guard let switchDevice = inactiveCamera(),
+              let videoInput = try? AVCaptureDeviceInput(device: switchDevice),
+              let currentInput = activeVideoInput else {
+            return false
+        }
+                
+        captureSession.beginConfiguration()
+        captureSession.removeInput(currentInput)
+        
+        if captureSession.canAddInput(videoInput) {
+            captureSession.addInput(videoInput)
+            activeVideoInput = videoInput
+        } else {
+            captureSession.addInput(currentInput)
+        }
+        
+        captureSession.commitConfiguration()
+        
+        return true
     }
     
     func canSwitchCameras() -> Bool {
-        return true
+        if let backDevice = cameraWithPosition(devicePosition: .back),
+           let frontDevice = cameraWithPosition(devicePosition: .front) {
+            return true
+        }
+        return false
     }
     
     func focusAtPoint(point: CGPoint) {
@@ -128,5 +162,29 @@ public class CameraController: NSObject {
     
     func isRecording() -> Bool {
         return true
+    }
+    
+    // private
+    private func activeCamera() -> AVCaptureDevice? {
+        return activeVideoInput?.device
+    }
+    
+    private func inactiveCamera() -> AVCaptureDevice? {
+        var position: AVCaptureDevice.Position
+        if activeCamera()?.position == .back {
+            position = .front
+        } else {
+            position = .back
+        }
+        return cameraWithPosition(devicePosition: position)
+    }
+    
+    private func cameraWithPosition(devicePosition: AVCaptureDevice.Position) -> AVCaptureDevice? {
+        let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: devicePosition)
+        
+        if discoverySession.devices.count > 0 {
+            return discoverySession.devices.first
+        }
+        return nil
     }
 }

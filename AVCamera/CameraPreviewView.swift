@@ -1,5 +1,5 @@
 //
-//  CameraView.swift
+//  CameraPreviewView.swift
 //  AVCamera
 //
 //  Created by Adaicon on 2025/2/19.
@@ -9,13 +9,13 @@ import Foundation
 import AVFoundation
 import UIKit
 
-protocol CameraViewDelegate: AnyObject {
+protocol CameraPreviewViewDelegate: AnyObject {
     func tappedToFocusAtPoint(point: CGPoint)
     func tappedToExposeAtPoint(point: CGPoint)
     func tappedToResetFocusAndExpose()
 }
 
-public class CameraView: UIView  {
+public class CameraPreviewView: UIView  {
     var session: AVCaptureSession? {
         get {
             if let value = self.layer as? AVCaptureVideoPreviewLayer {
@@ -30,7 +30,7 @@ public class CameraView: UIView  {
             }
         }
     }
-    weak var delegate: CameraViewDelegate?
+    weak var delegate: CameraPreviewViewDelegate?
     
     var tapToFocusEnabled: Bool = false
     var tapToExposeEnabled: Bool = false

@@ -14,7 +14,7 @@
 		1B6D8E072D622A5F008A4CF1 /* AVCameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8E062D622A5F008A4CF1 /* AVCameraTests.swift */; };
 		1B6D8E112D622A5F008A4CF1 /* AVCameraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8E102D622A5F008A4CF1 /* AVCameraUITests.swift */; };
 		1B6D8E132D622A5F008A4CF1 /* AVCameraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8E122D622A5F008A4CF1 /* AVCameraUITestsLaunchTests.swift */; };
-		1B6D8E232D64ECC8008A4CF1 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8E222D64ECC8008A4CF1 /* CameraView.swift */; };
+		1B6D8E232D64ECC8008A4CF1 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8E222D64ECC8008A4CF1 /* CameraPreviewView.swift */; };
 		1B6D8E252D64F925008A4CF1 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8E242D64F924008A4CF1 /* CameraController.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +47,7 @@
 		1B6D8E0C2D622A5F008A4CF1 /* AVCameraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AVCameraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6D8E102D622A5F008A4CF1 /* AVCameraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCameraUITests.swift; sourceTree = "<group>"; };
 		1B6D8E122D622A5F008A4CF1 /* AVCameraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCameraUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		1B6D8E222D64ECC8008A4CF1 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		1B6D8E222D64ECC8008A4CF1 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		1B6D8E242D64F924008A4CF1 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +104,7 @@
 				1B6D8DF32D622A5D008A4CF1 /* CameraViewController.swift */,
 				1B6D8DF82D622A5F008A4CF1 /* Assets.xcassets */,
 				1B6D8DFD2D622A5F008A4CF1 /* Info.plist */,
-				1B6D8E222D64ECC8008A4CF1 /* CameraView.swift */,
+				1B6D8E222D64ECC8008A4CF1 /* CameraPreviewView.swift */,
 				1B6D8E242D64F924008A4CF1 /* CameraController.swift */,
 			);
 			path = AVCamera;
@@ -259,7 +259,7 @@
 				1B6D8DF42D622A5D008A4CF1 /* CameraViewController.swift in Sources */,
 				1B6D8DF02D622A5D008A4CF1 /* AppDelegate.swift in Sources */,
 				1B6D8DF22D622A5D008A4CF1 /* SceneDelegate.swift in Sources */,
-				1B6D8E232D64ECC8008A4CF1 /* CameraView.swift in Sources */,
+				1B6D8E232D64ECC8008A4CF1 /* CameraPreviewView.swift in Sources */,
 				1B6D8E252D64F925008A4CF1 /* CameraController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
