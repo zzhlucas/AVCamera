@@ -20,12 +20,14 @@ protocol CameraControllerDelegate: AnyObject {
 public class CameraController: NSObject {
     weak var delegate: CameraControllerDelegate?
     let captureSession: AVCaptureSession
+    var isCaptureLivePhoto: Bool = false
     
     private var activeVideoInput: AVCaptureDeviceInput?
     private let photoOutput: AVCapturePhotoOutput
     private let movieOutput: AVCaptureMovieFileOutput
-    private var photoOutputSetting: AVCapturePhotoSettings
     private var currentDate = Date().timeIntervalSince1970
+    
+    private var livePhotoMovieURL: URL?
     
     let videoQueue: DispatchQueue
     
@@ -44,7 +46,6 @@ public class CameraController: NSObject {
         
         photoOutput = AVCapturePhotoOutput()
         movieOutput = AVCaptureMovieFileOutput()
-        photoOutputSetting = AVCapturePhotoSettings()
         
         videoQueue = DispatchQueue(label: "com.avcamera.serial.VideoQueue")
         
@@ -88,17 +89,41 @@ public class CameraController: NSObject {
         return true
     }
     
+    func setupLivePhoto(isUseLivePhoto: Bool) {
+        if isUseLivePhoto == isCaptureLivePhoto {
+            return
+        }
+        if (isUseLivePhoto) {
+            stopSession()
+            videoQueue.async { [self] in
+                captureSession.removeOutput(movieOutput)
+                photoOutput.isLivePhotoCaptureEnabled = photoOutput.isLivePhotoCaptureSupported
+            }
+            startSession()
+        } else {
+            stopSession()
+            videoQueue.async { [self] in
+                if captureSession.canAddOutput(movieOutput) {
+                    captureSession.addOutput(movieOutput)
+                }
+                photoOutput.isLivePhotoCaptureEnabled = false
+            }
+            startSession()
+        }
+        isCaptureLivePhoto = isUseLivePhoto
+    }
+    
     func startSession() {
-        if !captureSession.isRunning {
-            videoQueue.async { [self] in // 为什么要放在异步队列里呢，耗时函数，会阻塞主线程
+        videoQueue.async { [self] in
+            if !captureSession.isRunning {
                 captureSession.startRunning()
             }
         }
     }
     
     func stopSession() {
-        if captureSession.isRunning {
-            videoQueue.async { [self] in
+        videoQueue.async { [self] in
+            if captureSession.isRunning {
                 captureSession.stopRunning()
             }
         }
@@ -153,6 +178,36 @@ public class CameraController: NSObject {
     
     // media
     func capturePhoto() {
+        if isCaptureLivePhoto {
+            captureLivePhoto()
+        } else {
+            captureStillImage()
+        }
+    }
+    
+    private func captureLivePhoto() {
+        guard let device = activeCamera() else {
+            return
+        }
+        
+        let photoOutputSetting = AVCapturePhotoSettings()
+        photoOutputSetting.flashMode = .auto
+        
+        // 配置 live photo 参数
+        let livePhotoMovieFileName = UUID().uuidString
+        let livePhotoMovieURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("\(livePhotoMovieFileName).mov")
+        
+        self.livePhotoMovieURL = livePhotoMovieURL
+                
+        photoOutputSetting.livePhotoMovieFileURL = livePhotoMovieURL
+        photoOutputSetting.embedsDepthDataInPhoto = false
+        
+        // 触发拍摄
+        photoOutput.capturePhoto(with: photoOutputSetting, delegate: self)
+        
+    }
+    
+    private func captureStillImage() {
         guard let device = activeCamera() else {
             return
         }
@@ -176,7 +231,7 @@ public class CameraController: NSObject {
             return
         }
         
-        photoOutputSetting = AVCapturePhotoSettings()
+        let photoOutputSetting = AVCapturePhotoSettings()
         photoOutputSetting.flashMode = .auto
 //        photoOutputSetting.maxPhotoDimensions = CMVideoDimensions(width: 1080, height: 1920)
         currentDate = Date().timeIntervalSince1970
@@ -218,6 +273,26 @@ public class CameraController: NSObject {
             return discoverySession.devices.first
         }
         return nil
+    }
+    
+    // MARK: - 保存到相册
+    private func saveLivePhotoToAlbum(photoURL: URL, videoURL: URL) {
+        PHPhotoLibrary.shared().performChanges {
+            let creationRequest = PHAssetCreationRequest.forAsset()
+            let options = PHAssetResourceCreationOptions()
+            
+            // 添加照片和视频资源
+            creationRequest.addResource(with: .photo, fileURL: photoURL, options: nil)
+            creationRequest.addResource(with: .pairedVideo, fileURL: videoURL, options: options)
+        } completionHandler: { success, error in
+            DispatchQueue.main.async {
+                if success {
+                    print("Live Photo保存成功")
+                } else {
+                    print("保存失败: \(error?.localizedDescription ?? "未知错误")")
+                }
+            }
+        }
     }
     
     private func saveImageToAlbum(image: UIImage) {
@@ -269,27 +344,43 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
         if let _ = error {
             return
         }
-        if let imageData = photo.fileDataRepresentation(),
-           let image = UIImage(data: imageData) {
-            var time = Date().timeIntervalSince1970 - currentDate
-            self.delegate?.didCapturePhoto(timeGap: time, size: CGSize(width: image.size.width, height: image.size.height))
-            PHPhotoLibrary.requestAuthorization { [weak self] status in
-                switch status {
-                case.authorized:
-                    // 权限已授予，保存图片
-                    self?.saveImageToAlbum(image: image)
-                case.denied,.restricted:
-                    // 权限被拒绝或受限
-                    print("没有权限访问相册")
-                case.notDetermined:
-                    // 权限未确定，这种情况通常不会在这里出现
-                    print("相册权限未确定")
-                case .limited:
-                    print("相册权限是limited")
-                @unknown default:
-                    break
+        if isCaptureLivePhoto {
+            guard let photoData = photo.fileDataRepresentation() else { return }
+            let photoURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("temp_photo.jpg")
+            try? photoData.write(to: photoURL)
+        } else {
+            if let imageData = photo.fileDataRepresentation(),
+               let image = UIImage(data: imageData) {
+                let time = Date().timeIntervalSince1970 - currentDate
+                self.delegate?.didCapturePhoto(timeGap: time, size: CGSize(width: image.size.width, height: image.size.height))
+                PHPhotoLibrary.requestAuthorization { [weak self] status in
+                    switch status {
+                    case.authorized:
+                        // 权限已授予，保存图片
+                        self?.saveImageToAlbum(image: image)
+                    case.denied,.restricted:
+                        // 权限被拒绝或受限
+                        print("没有权限访问相册")
+                    case.notDetermined:
+                        // 权限未确定，这种情况通常不会在这里出现
+                        print("相册权限未确定")
+                    case .limited:
+                        print("相册权限是limited")
+                    @unknown default:
+                        break
+                    }
                 }
             }
+        }
+    }
+    
+    public func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingLivePhotoToMovieFileAt outputFileURL: URL, duration: CMTime, photoDisplayTime: CMTime, resolvedSettings: AVCaptureResolvedPhotoSettings, error: Error?) {
+        // 处理视频文件（已自动保存到指定URL）
+        // 当视频部分也处理完成后，保存Live Photo
+        if let livePhotoMovieURL = self.livePhotoMovieURL {
+            let photoURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("temp_photo.jpg")
+            saveLivePhotoToAlbum(photoURL: photoURL, videoURL: livePhotoMovieURL)
+            self.livePhotoMovieURL = nil
         }
     }
 }

@@ -15,6 +15,7 @@ class CameraViewController: UIViewController {
     let takePhotoButton = UIButton(frame: .zero)
     let photoPresetButton = UIButton(frame: .zero)
     let highPresetButton = UIButton(frame: .zero)
+    let useLivePhotoButton = UIButton(frame: .zero)
     let timeLabel = UILabel(frame: .zero)
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -51,6 +52,12 @@ class CameraViewController: UIViewController {
         highPresetButton.addTarget(self, action: #selector(highPresetButtonTapped), for: .touchUpInside)
         self.view.addSubview(highPresetButton)
         
+        useLivePhotoButton.frame = CGRect(x: 0, y: 500, width: 150, height: 56)
+        useLivePhotoButton.backgroundColor = .red.withAlphaComponent(0.5)
+        useLivePhotoButton.setTitle("Live Photo", for: .normal)
+        useLivePhotoButton.addTarget(self, action: #selector(useLivePhotoButtonTapped), for: .touchUpInside)
+        self.view.addSubview(useLivePhotoButton)
+        
         timeLabel.frame = CGRect(x: 0, y: 200, width: self.view.frame.width, height: 56)
         timeLabel.backgroundColor = .yellow.withAlphaComponent(0.5)
         self.view.addSubview(timeLabel)
@@ -68,6 +75,17 @@ class CameraViewController: UIViewController {
     
     @objc func photoPresetButtonTapped() {
         cameraController.captureSession.sessionPreset = .photo
+    }
+    
+    @objc func useLivePhotoButtonTapped() {
+        useLivePhotoButton.isSelected = !useLivePhotoButton.isSelected
+        cameraController.setupLivePhoto(isUseLivePhoto: useLivePhotoButton.isSelected)
+        
+        if useLivePhotoButton.isSelected {
+            useLivePhotoButton.backgroundColor = .green.withAlphaComponent(0.5)
+        } else {
+            useLivePhotoButton.backgroundColor = .red.withAlphaComponent(0.5)
+        }
     }
     
     @objc func highPresetButtonTapped() {
