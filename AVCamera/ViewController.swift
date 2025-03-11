@@ -36,6 +36,8 @@ class ViewController: UIViewController {
     }
     
     @objc func clickPlayerBtn() {
-        
+        let playerViewController = PlayerViewController()
+        playerViewController.modalPresentationStyle = .fullScreen
+        present(playerViewController, animated: true)
     }
 }
