@@ -12,6 +12,13 @@ class CameraViewController: UIViewController {
     let cameraPreviewView: CameraPreviewView = CameraPreviewView(frame: .zero)
     let cameraController: CameraController = CameraController()
     
+    let backButton = {
+        var btn = UIButton(frame: CGRect(x: 44, y: 44, width: 44, height: 44))
+        btn.setImage(UIImage(named: "back"), for: .normal)
+        btn.backgroundColor = .red
+        return btn
+    }()
+    
     let takePhotoButton = UIButton(frame: .zero)
     let photoPresetButton = UIButton(frame: .zero)
     let highPresetButton = UIButton(frame: .zero)
@@ -30,7 +37,7 @@ class CameraViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.view.backgroundColor = .black
+        self.view.backgroundColor = .gray
         
         takePhotoButton.frame = CGRect(x: 0, y: 0, width: 56, height: 56)
         takePhotoButton.center = CGPoint(x: self.view.frame.width / 2.0, y: self.view.frame.height - 56)
@@ -67,6 +74,17 @@ class CameraViewController: UIViewController {
             cameraPreviewView.session = cameraController.captureSession
             cameraController.startSession()
         }
+        
+        backButton.addTarget(self, action: #selector(clickBackButton), for: .touchUpInside)
+        self.view.addSubview(backButton)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        cameraController.startSession()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        cameraController.stopSession()
     }
     
     @objc func takePhotoButtonTapped() {
@@ -98,6 +116,12 @@ class CameraViewController: UIViewController {
         cameraPreviewView.frame = CGRect(x: 0, y: 44, width: width, height: height)
         cameraPreviewView.backgroundColor = UIColor.black
         self.view.addSubview(cameraPreviewView)
+    }
+    
+    // MARK: private
+    
+    @objc func clickBackButton() {
+        self.dismiss(animated: true)
     }
 }
 
