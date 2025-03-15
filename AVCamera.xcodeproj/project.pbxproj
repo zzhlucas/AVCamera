@@ -10,6 +10,7 @@
 		1B52B25A2D808EAB00F7C584 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52B2592D808EAB00F7C584 /* ViewController.swift */; };
 		1B52B25C2D80933600F7C584 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52B25B2D80933600F7C584 /* PlayerViewController.swift */; };
 		1B52B2632D80A09300F7C584 /* video.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 1B52B2622D80A09300F7C584 /* video.MOV */; };
+		1B52B2652D85A4C900F7C584 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52B2642D85A4C900F7C584 /* PlayerView.swift */; };
 		1B6D8DF02D622A5D008A4CF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8DEF2D622A5D008A4CF1 /* AppDelegate.swift */; };
 		1B6D8DF22D622A5D008A4CF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8DF12D622A5D008A4CF1 /* SceneDelegate.swift */; };
 		1B6D8DF42D622A5D008A4CF1 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8DF32D622A5D008A4CF1 /* CameraViewController.swift */; };
@@ -42,6 +43,7 @@
 		1B52B2592D808EAB00F7C584 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1B52B25B2D80933600F7C584 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		1B52B2622D80A09300F7C584 /* video.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video.MOV; sourceTree = "<group>"; };
+		1B52B2642D85A4C900F7C584 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		1B6D8DEC2D622A5D008A4CF1 /* AVCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6D8DEF2D622A5D008A4CF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B6D8DF12D622A5D008A4CF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				1B6D8E242D64F924008A4CF1 /* CameraController.swift */,
 				1B52B2592D808EAB00F7C584 /* ViewController.swift */,
 				1B52B25B2D80933600F7C584 /* PlayerViewController.swift */,
+				1B52B2642D85A4C900F7C584 /* PlayerView.swift */,
 			);
 			path = AVCamera;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				1B52B25A2D808EAB00F7C584 /* ViewController.swift in Sources */,
 				1B6D8DF42D622A5D008A4CF1 /* CameraViewController.swift in Sources */,
 				1B6D8DF02D622A5D008A4CF1 /* AppDelegate.swift in Sources */,
+				1B52B2652D85A4C900F7C584 /* PlayerView.swift in Sources */,
 				1B52B25C2D80933600F7C584 /* PlayerViewController.swift in Sources */,
 				1B6D8DF22D622A5D008A4CF1 /* SceneDelegate.swift in Sources */,
 				1B6D8E232D64ECC8008A4CF1 /* CameraPreviewView.swift in Sources */,
