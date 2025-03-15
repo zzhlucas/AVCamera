@@ -88,6 +88,7 @@ class PlayerView: UIView, UIGestureRecognizerDelegate {
         player = AVPlayer(playerItem: playerItem)
         
         let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.videoGravity = .resizeAspectFill
         playerLayer.frame = CGRect(x: 0, y: 0, width: renderView.frame.width, height: renderView.frame.height)
         
         renderView.layer.addSublayer(playerLayer)

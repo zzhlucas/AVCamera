@@ -53,9 +53,13 @@ class PlayerViewController: UIViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
                     let frame = CGRect(x: baseWidth * CGFloat(column), y: baseHeight * CGFloat(row), width: baseWidth, height: baseHeight)
                     let view = PlayerView(frame: frame)
-                    view.seekToZero()
-                    self.playerViewArray.append(view)
                     self.playerContainerView.addSubview(view)
+                    
+                    for i in 0..<self.playerViewArray.count {
+                        self.playerViewArray[i].seekToZero()
+                    }
+                    
+                    self.playerViewArray.append(view)
                 })
             }
         }
