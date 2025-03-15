@@ -11,7 +11,7 @@ import AVFoundation
 
 class PlayerViewController: UIViewController {
     var playerContainerView = UIView()
-    var interactionContainerView = UIView()
+    var interactionContainerView = PassthroughView()
     var playerViewArray = [PlayerView]()
     
     let rows = 3, columns = 2

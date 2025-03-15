@@ -118,11 +118,29 @@ class PlayerView: UIView, UIGestureRecognizerDelegate {
     }
     
     @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        print("pan")
+        let offset = gesture.translation(in: self)
+        switch gesture.state {
+        case .began:
+            lastOffset = offset
+        case .changed:
+            let deltaX = (offset.x - lastOffset.x) / renderView.transform.a
+            let deltaY = (offset.y - lastOffset.y) / renderView.transform.a
+            lastOffset = offset
+            renderView.transform = CGAffineTransformTranslate(renderView.transform, deltaX, deltaY)
+        default:
+            lastOffset = .zero
+        }
     }
     
     @objc func handlePinchGesture(_ gesture: UIPinchGestureRecognizer) {
-        print("pinch")
+        let deltaScale = gesture.scale
+        switch gesture.state {
+        case .changed:
+            renderView.transform = CGAffineTransformScale(renderView.transform, deltaScale, deltaScale)
+        default:
+            print("")
+        }
+        gesture.scale = 1.0
     }
     
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
