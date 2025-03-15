@@ -93,12 +93,16 @@ class PlayerView: UIView, UIGestureRecognizerDelegate {
         renderView.layer.addSublayer(playerLayer)
     }
     
+    func seekToZero() {
+        player?.seek(to: .zero)
+    }
+    
     // MARK: KVO
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == #keyPath(AVPlayerItem.status),
-           let status = change?[.newKey] as? AVPlayerItem.Status {
-            if status == .readyToPlay {
+        if keyPath == #keyPath(AVPlayerItem.status) {
+            if let status = change?[.newKey] as? Int, 
+               AVPlayerItem.Status(rawValue: status) == .readyToPlay {
                 player?.play()
             }
         } else {

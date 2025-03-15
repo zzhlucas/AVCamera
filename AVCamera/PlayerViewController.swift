@@ -10,11 +10,11 @@ import UIKit
 import AVFoundation
 
 class PlayerViewController: UIViewController {
+    var playerContainerView = UIView()
+    var interactionContainerView = UIView()
+    var playerViewArray = [PlayerView]()
     
-    var playerItemObservation: NSKeyValueObservation?
-    
-    var player: AVPlayer!
-    var playerItem: AVPlayerItem!
+    let rows = 3, columns = 2
     
     let backButton = {
         var btn = UIButton(frame: CGRect(x: 44, y: 44, width: 44, height: 44))
@@ -31,30 +31,40 @@ class PlayerViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        playerItemObservation?.invalidate()
+    override func viewDidLoad() {
+        setupUI()
     }
     
-    override func viewDidLoad() {
+    func setupUI() {
         self.view.backgroundColor = .gray
         
-        guard let assetURL = Bundle.main.url(forResource: "video", withExtension: "MOV") else {
-            return
+        let containerWidth = self.view.bounds.width
+        let containerHeight = self.view.bounds.width * 16.0 / 9.0
+        
+        playerContainerView.frame = CGRect(x: 0, y: 44, width: containerWidth, height: containerHeight)
+        self.view.addSubview(playerContainerView)
+        
+        let baseWidth = containerWidth / CGFloat(columns)
+        let baseHeight = containerHeight / CGFloat(rows)
+        
+        for row in 0..<rows {
+            for column in 0..<columns {
+                let time = 2.0 * Double(row + column)
+                DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
+                    let frame = CGRect(x: baseWidth * CGFloat(column), y: baseHeight * CGFloat(row), width: baseWidth, height: baseHeight)
+                    let view = PlayerView(frame: frame)
+                    view.seekToZero()
+                    self.playerViewArray.append(view)
+                    self.playerContainerView.addSubview(view)
+                })
+            }
         }
-        let asset = AVAsset(url: assetURL)
         
-        playerItem = AVPlayerItem(asset: asset)
-        playerItem.addObserver(self, forKeyPath:"status", options: [NSKeyValueObservingOptions.old, NSKeyValueObservingOptions.new] , context: nil)
-        player = AVPlayer(playerItem: playerItem)
-//        player?.play()
-        
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = CGRect(x: 0, y: 44, width: self.view.bounds.width, height: self.view.bounds.width * 16.0 / 9.0)
-        
-        self.view.layer.addSublayer(playerLayer)
+        interactionContainerView.frame = playerContainerView.frame
+        self.view.addSubview(interactionContainerView)
         
         backButton.addTarget(self, action: #selector(clickBackButton), for: .touchUpInside)
-        self.view.addSubview(backButton)
+        interactionContainerView.addSubview(backButton)
     }
     
     
@@ -62,14 +72,5 @@ class PlayerViewController: UIViewController {
     
     @objc func clickBackButton() {
         self.dismiss(animated: true)
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if playerItem.status == .readyToPlay {
-            print("readyToPlay")
-            // 设置播放监听
-            // 监听时间
-            player.play()
-        }
     }
 }
