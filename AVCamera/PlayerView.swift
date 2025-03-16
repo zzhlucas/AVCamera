@@ -15,6 +15,8 @@ class PlayerView: UIView, UIGestureRecognizerDelegate {
     var player: AVPlayer?
     var playerItem: AVPlayerItem?
     
+    var playEndNotificationToken: NSObjectProtocol?
+    
     var panGes: UIPanGestureRecognizer?
     var tapGes: UITapGestureRecognizer?
     var pinchGes: UIPinchGestureRecognizer?
@@ -33,10 +35,6 @@ class PlayerView: UIView, UIGestureRecognizerDelegate {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    deinit {
-        playerItem?.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status))
     }
     
     override var frame: CGRect {
@@ -98,14 +96,41 @@ class PlayerView: UIView, UIGestureRecognizerDelegate {
         player?.seek(to: .zero)
     }
     
+    func addPlayerItemEndObserver() {
+        guard let playerItem else {
+            return
+        }
+        playEndNotificationToken = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: playerItem, queue: .main) { [weak self] _ in
+            self?.seekToZero()
+            self?.player?.play()
+        }
+    }
+    
+    func addPlayerItemTimeObserver() {
+        
+    }
+    
+    deinit {
+        if let playEndNotificationToken {
+            NotificationCenter.default.removeObserver(playEndNotificationToken)
+        }
+    }
+    
     // MARK: KVO
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == #keyPath(AVPlayerItem.status) {
-            if let status = change?[.newKey] as? Int, 
-               AVPlayerItem.Status(rawValue: status) == .readyToPlay {
-                player?.play()
-            }
+            DispatchQueue.main.async(execute: {
+                if let status = change?[.newKey] as? Int,
+                   AVPlayerItem.Status(rawValue: status) == .readyToPlay {
+                    self.playerItem?.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status))
+                    
+                    self.addPlayerItemTimeObserver()
+                    self.addPlayerItemEndObserver()
+                    
+                    self.player?.play()
+                }
+            })
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
