@@ -10,10 +10,16 @@ import AVFoundation
 import CoreGraphics
 import UIKit
 
+protocol PlayerViewDelegate: NSObjectProtocol {
+    func playerDidEnd()
+}
+
 class PlayerView: UIView, UIGestureRecognizerDelegate {
     var renderView = UIView()
     var player: AVPlayer?
     var playerItem: AVPlayerItem?
+    
+    var delegate: PlayerViewDelegate?
     
     var playEndNotificationToken: NSObjectProtocol?
     
@@ -94,6 +100,7 @@ class PlayerView: UIView, UIGestureRecognizerDelegate {
     
     func seekToZero() {
         player?.seek(to: .zero)
+        player?.play()
     }
     
     func addPlayerItemEndObserver() {
@@ -101,8 +108,7 @@ class PlayerView: UIView, UIGestureRecognizerDelegate {
             return
         }
         playEndNotificationToken = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: playerItem, queue: .main) { [weak self] _ in
-            self?.seekToZero()
-            self?.player?.play()
+            self?.delegate?.playerDidEnd()
         }
     }
     

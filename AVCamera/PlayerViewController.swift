@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import AVFoundation
 
-class PlayerViewController: UIViewController {
+class PlayerViewController: UIViewController, PlayerViewDelegate {
     var playerContainerView = UIView()
     var interactionContainerView = PassthroughView()
     var playerViewArray = [PlayerView]()
@@ -59,6 +59,8 @@ class PlayerViewController: UIViewController {
                         self.playerViewArray[i].seekToZero()
                     }
                     
+                    view.delegate = self
+                    
                     self.playerViewArray.append(view)
                 })
             }
@@ -76,5 +78,13 @@ class PlayerViewController: UIViewController {
     
     @objc func clickBackButton() {
         self.dismiss(animated: true)
+    }
+    
+    // MARK: PlayerViewDelegate
+    
+    public func playerDidEnd() {
+        for i in 0..<playerViewArray.count {
+            playerViewArray[i].seekToZero()
+        }
     }
 }
