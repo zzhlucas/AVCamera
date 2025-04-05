@@ -16,6 +16,8 @@ public class LayoutViewController: UIViewController {
         return btn
     }()
     
+    var layoutContainerView: LayoutContainerView!
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -30,6 +32,10 @@ public class LayoutViewController: UIViewController {
     
     func setupUI() {
         self.view.backgroundColor = .gray
+        
+        let frame = CGRect(x: 0, y: 44, width: self.view.bounds.width, height: self.view.bounds.width * 16.0 / 9.0)
+        layoutContainerView = LayoutContainerView(frame: frame)
+        self.view.addSubview(layoutContainerView)
         
         backButton.addTarget(self, action: #selector(clickBackButton), for: .touchUpInside)
         self.view.addSubview(backButton)
