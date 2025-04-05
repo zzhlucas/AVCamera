@@ -94,6 +94,25 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		1B52B2682DA178E300F7C584 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				1B6D8DF32D622A5D008A4CF1 /* CameraViewController.swift */,
+				1B6D8E242D64F924008A4CF1 /* CameraController.swift */,
+				1B6D8E222D64ECC8008A4CF1 /* CameraPreviewView.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		1B52B2692DA178E900F7C584 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				1B52B25B2D80933600F7C584 /* PlayerViewController.swift */,
+				1B52B2642D85A4C900F7C584 /* PlayerView.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		1B6D8DE32D622A5D008A4CF1 = {
 			isa = PBXGroup;
 			children = (
@@ -117,17 +136,14 @@
 		1B6D8DEE2D622A5D008A4CF1 /* AVCamera */ = {
 			isa = PBXGroup;
 			children = (
+				1B52B2692DA178E900F7C584 /* Player */,
+				1B52B2682DA178E300F7C584 /* Camera */,
 				1B52B25D2D8095B500F7C584 /* Resource */,
 				1B6D8DEF2D622A5D008A4CF1 /* AppDelegate.swift */,
 				1B6D8DF12D622A5D008A4CF1 /* SceneDelegate.swift */,
-				1B6D8DF32D622A5D008A4CF1 /* CameraViewController.swift */,
 				1B6D8DF82D622A5F008A4CF1 /* Assets.xcassets */,
 				1B6D8DFD2D622A5F008A4CF1 /* Info.plist */,
-				1B6D8E222D64ECC8008A4CF1 /* CameraPreviewView.swift */,
-				1B6D8E242D64F924008A4CF1 /* CameraController.swift */,
 				1B52B2592D808EAB00F7C584 /* ViewController.swift */,
-				1B52B25B2D80933600F7C584 /* PlayerViewController.swift */,
-				1B52B2642D85A4C900F7C584 /* PlayerView.swift */,
 				1B52B2662D85C07200F7C584 /* PassthroughView.swift */,
 			);
 			path = AVCamera;
