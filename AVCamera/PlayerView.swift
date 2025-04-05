@@ -18,10 +18,12 @@ class PlayerView: UIView, UIGestureRecognizerDelegate {
     var renderView = UIView()
     var player: AVPlayer?
     var playerItem: AVPlayerItem?
+    var maxDurtion = Double.greatestFiniteMagnitude
     
     var delegate: PlayerViewDelegate?
     
     var playEndNotificationToken: NSObjectProtocol?
+    var timeObserver: Any?
     
     var panGes: UIPanGestureRecognizer?
     var tapGes: UITapGestureRecognizer?
@@ -113,12 +115,32 @@ class PlayerView: UIView, UIGestureRecognizerDelegate {
     }
     
     func addPlayerItemTimeObserver() {
+        if index != 5 {
+            return
+        }
+        let interval = CMTime(value: 1, timescale: 10)
         
+        timeObserver = player?.addPeriodicTimeObserver(forInterval: interval, queue: .main, using: { [weak self] time in
+            let currentTime = CMTimeGetSeconds(time)
+            print("\(String(describing: self?.index)), \(currentTime)")
+            if currentTime - 0.01 >= self?.maxDurtion ?? 0 {
+                print("\(String(describing: self?.index)), player did end")
+                self?.player?.pause()
+                if let timeObserver = self?.timeObserver {
+                    self?.player?.removeTimeObserver(timeObserver)
+                }
+                self?.delegate?.playerDidEnd()
+                
+            }
+        })
     }
     
     deinit {
         if let playEndNotificationToken {
             NotificationCenter.default.removeObserver(playEndNotificationToken)
+        }
+        if let timeObserver {
+            player?.removeTimeObserver(timeObserver)
         }
     }
     
