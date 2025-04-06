@@ -15,6 +15,7 @@
 		1B52B26C2DA179AE00F7C584 /* LayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52B26B2DA179AE00F7C584 /* LayoutViewController.swift */; };
 		1B52B26F2DA17C9800F7C584 /* LayoutContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52B26E2DA17C9800F7C584 /* LayoutContainerView.swift */; };
 		1B52B2712DA17CA400F7C584 /* LayoutGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52B2702DA17CA400F7C584 /* LayoutGridView.swift */; };
+		1B52B2732DA1840500F7C584 /* LayoutAssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52B2722DA1840500F7C584 /* LayoutAssetView.swift */; };
 		1B6D8DF02D622A5D008A4CF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8DEF2D622A5D008A4CF1 /* AppDelegate.swift */; };
 		1B6D8DF22D622A5D008A4CF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8DF12D622A5D008A4CF1 /* SceneDelegate.swift */; };
 		1B6D8DF42D622A5D008A4CF1 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8DF32D622A5D008A4CF1 /* CameraViewController.swift */; };
@@ -52,6 +53,7 @@
 		1B52B26B2DA179AE00F7C584 /* LayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutViewController.swift; sourceTree = "<group>"; };
 		1B52B26E2DA17C9800F7C584 /* LayoutContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutContainerView.swift; sourceTree = "<group>"; };
 		1B52B2702DA17CA400F7C584 /* LayoutGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutGridView.swift; sourceTree = "<group>"; };
+		1B52B2722DA1840500F7C584 /* LayoutAssetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutAssetView.swift; sourceTree = "<group>"; };
 		1B6D8DEC2D622A5D008A4CF1 /* AVCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6D8DEF2D622A5D008A4CF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B6D8DF12D622A5D008A4CF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				1B52B26B2DA179AE00F7C584 /* LayoutViewController.swift */,
 				1B52B26E2DA17C9800F7C584 /* LayoutContainerView.swift */,
 				1B52B2702DA17CA400F7C584 /* LayoutGridView.swift */,
+				1B52B2722DA1840500F7C584 /* LayoutAssetView.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				1B52B25C2D80933600F7C584 /* PlayerViewController.swift in Sources */,
 				1B6D8DF22D622A5D008A4CF1 /* SceneDelegate.swift in Sources */,
 				1B6D8E232D64ECC8008A4CF1 /* CameraPreviewView.swift in Sources */,
+				1B52B2732DA1840500F7C584 /* LayoutAssetView.swift in Sources */,
 				1B6D8E252D64F925008A4CF1 /* CameraController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

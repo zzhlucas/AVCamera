@@ -13,6 +13,6 @@ public class PassthroughView: UIView {
         if view == self {
             return nil
         }
-        return nil
+        return view
     }
 }
