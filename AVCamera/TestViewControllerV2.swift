@@ -76,6 +76,8 @@ public class TestViewControllerV2: UIViewController, UIGestureRecognizerDelegate
                 scale = 1.0 / viewB.transform.a
             }
             viewB.transform = viewB.transform.scaledBy(x: scale, y: scale)
+            let offset = boundaryDetect(childView: viewB, offset: CGPoint(x: 0, y: 0))
+            viewB.transform = viewB.transform.translatedBy(x: offset.x, y: offset.y)
         }
         
         if gesture.state == .ended {
@@ -92,13 +94,37 @@ public class TestViewControllerV2: UIViewController, UIGestureRecognizerDelegate
         case .began:
             lastOffset = offset
         case .changed:
-            let deltaX = (offset.x - lastOffset.x) / viewB.transform.a
-            let deltaY = (offset.y - lastOffset.y) / viewB.transform.a
+            let deltaX = (offset.x - lastOffset.x)
+            let deltaY = (offset.y - lastOffset.y)
+            var currentOffset = CGPoint(x: deltaX, y: deltaY)
+            currentOffset = boundaryDetect(childView: viewB, offset: currentOffset)
+            viewB.transform = CGAffineTransformTranslate(viewB.transform, currentOffset.x, currentOffset.y)
             lastOffset = offset
-            viewB.transform = CGAffineTransformTranslate(viewB.transform, deltaX, deltaY)
         default:
             lastOffset = .zero
         }
+    }
+    
+    func boundaryDetect(childView: UIView, offset: CGPoint) -> CGPoint {
+        let frame = childView.frame
+        let bounds = viewA.bounds
+
+        var deltaX = offset.x / childView.transform.a
+        var deltaY = offset.y / childView.transform.a
+        
+        if frame.minX + deltaX >= 0 { // 检查左边界
+            deltaX = -frame.minX
+        } else if frame.maxX + deltaX <= bounds.width { // 检查右边界
+            deltaX = bounds.width - frame.maxX
+        }
+
+        if frame.minY + deltaY >= 0 { // 检查上边界
+            deltaY = -frame.minY
+        } else if frame.maxY + deltaY <= bounds.height { // 检查下边界
+            deltaY = bounds.height - frame.maxY
+        }
+
+        return CGPoint(x: deltaX, y: deltaY)
     }
     
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
