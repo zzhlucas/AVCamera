@@ -102,7 +102,7 @@ class PlayerView: UIView, UIGestureRecognizerDelegate {
     
     func seekToZero() {
         player?.seek(to: .zero)
-        player?.play()
+//        player?.play()
     }
     
     func addPlayerItemEndObserver() {
@@ -156,7 +156,7 @@ class PlayerView: UIView, UIGestureRecognizerDelegate {
                     self.addPlayerItemTimeObserver()
                     self.addPlayerItemEndObserver()
                     
-                    self.player?.play()
+//                    self.player?.play()
                 }
             })
         } else {

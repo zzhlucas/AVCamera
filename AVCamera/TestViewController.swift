@@ -10,7 +10,11 @@ import Foundation
 
 public class TestViewController: UIViewController {
     let viewA = UIView()
-    let viewB = UIView()
+    let viewB = {
+        let image = UIImage(named: "image")
+        let imageView = UIImageView(image: image)
+        return imageView
+    }()
     let viewC = UIView()
     var initialCenter = CGPoint()
     var pinchCenter: CGPoint = .zero

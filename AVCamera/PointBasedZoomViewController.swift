@@ -9,7 +9,14 @@ import Foundation
 import UIKit
 
 public class PointBasedZoomViewController: UIViewController, UIGestureRecognizerDelegate {
-    let viewA = UIView()
+    let viewA = {
+        let image = UIImage(named: "image")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.isUserInteractionEnabled = true
+        return imageView
+    }()
     let viewC = UIView()
     var initialCenter = CGPoint()
     var pinchCenter: CGPoint = .zero
