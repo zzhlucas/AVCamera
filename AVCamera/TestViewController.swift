@@ -13,6 +13,9 @@ public class TestViewController: UIViewController {
     let viewB = {
         let image = UIImage(named: "image")
         let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     let viewC = UIView()

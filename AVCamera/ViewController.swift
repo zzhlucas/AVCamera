@@ -49,7 +49,7 @@ class ViewController: UIViewController {
     }
     
     @objc func clickLayoutBtn() {
-        let layoutViewController = PointBasedZoomViewController()
+        let layoutViewController = TestViewControllerV2()
         layoutViewController.modalPresentationStyle = .fullScreen
         present(layoutViewController, animated: true)
     }

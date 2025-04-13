@@ -19,6 +19,7 @@
 		1B52B2752DAC0B7500F7C584 /* PointBasedZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52B2742DAC0B7500F7C584 /* PointBasedZoomViewController.swift */; };
 		1B52B2772DAC0B9900F7C584 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52B2762DAC0B9900F7C584 /* TestViewController.swift */; };
 		1B52B2792DAC249500F7C584 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B52B2782DAC249500F7C584 /* image.jpg */; };
+		1B52B27B2DAC27AC00F7C584 /* TestViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B52B27A2DAC27AC00F7C584 /* TestViewControllerV2.swift */; };
 		1B6D8DF02D622A5D008A4CF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8DEF2D622A5D008A4CF1 /* AppDelegate.swift */; };
 		1B6D8DF22D622A5D008A4CF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8DF12D622A5D008A4CF1 /* SceneDelegate.swift */; };
 		1B6D8DF42D622A5D008A4CF1 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6D8DF32D622A5D008A4CF1 /* CameraViewController.swift */; };
@@ -60,6 +61,7 @@
 		1B52B2742DAC0B7500F7C584 /* PointBasedZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBasedZoomViewController.swift; sourceTree = "<group>"; };
 		1B52B2762DAC0B9900F7C584 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		1B52B2782DAC249500F7C584 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
+		1B52B27A2DAC27AC00F7C584 /* TestViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewControllerV2.swift; sourceTree = "<group>"; };
 		1B6D8DEC2D622A5D008A4CF1 /* AVCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6D8DEF2D622A5D008A4CF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B6D8DF12D622A5D008A4CF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				1B52B2662D85C07200F7C584 /* PassthroughView.swift */,
 				1B52B2742DAC0B7500F7C584 /* PointBasedZoomViewController.swift */,
 				1B52B2762DAC0B9900F7C584 /* TestViewController.swift */,
+				1B52B27A2DAC27AC00F7C584 /* TestViewControllerV2.swift */,
 			);
 			path = AVCamera;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				1B52B25C2D80933600F7C584 /* PlayerViewController.swift in Sources */,
 				1B52B2772DAC0B9900F7C584 /* TestViewController.swift in Sources */,
 				1B6D8DF22D622A5D008A4CF1 /* SceneDelegate.swift in Sources */,
+				1B52B27B2DAC27AC00F7C584 /* TestViewControllerV2.swift in Sources */,
 				1B6D8E232D64ECC8008A4CF1 /* CameraPreviewView.swift in Sources */,
 				1B52B2732DA1840500F7C584 /* LayoutAssetView.swift in Sources */,
 				1B6D8E252D64F925008A4CF1 /* CameraController.swift in Sources */,
