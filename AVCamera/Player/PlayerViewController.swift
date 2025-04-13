@@ -12,9 +12,9 @@ import AVFoundation
 class PlayerViewController: UIViewController, PlayerViewDelegate {
     var playerContainerView = UIView()
     var interactionContainerView = PassthroughView()
-    var playerViewArray = [PlayerView]()
+    var playerViewArray = [PlayerViewV2]()
     
-    let rows = 3, columns = 2
+    let rows = 1, columns = 2
     
     let backButton = {
         var btn = UIButton(frame: CGRect(x: 44, y: 44, width: 44, height: 44))
@@ -52,7 +52,7 @@ class PlayerViewController: UIViewController, PlayerViewDelegate {
                 let time = 2.0 * Double(row + column)
                 DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
                     let frame = CGRect(x: baseWidth * CGFloat(column), y: baseHeight * CGFloat(row), width: baseWidth, height: baseHeight)
-                    let view = PlayerView(frame: frame)
+                    let view = PlayerViewV2(frame: frame)
                     view.index = row * self.columns + column
                     view.maxDurtion = 5.0
                     self.playerContainerView.addSubview(view)
